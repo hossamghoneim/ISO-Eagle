@@ -60,10 +60,12 @@ Route::get('composer-install', function () {
 
 });
 
-Route::get('create-db', function () {
+Route::get('setup-credentials', function () {
 
     Artisan::call('migrate');
     Artisan::call('db:seed');
+    Artisan::call('key:generate');
+    Artisan::call('storage:link');
 
     dd('done');
 
