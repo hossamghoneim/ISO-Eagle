@@ -1,8 +1,4 @@
 @extends('partials.dashboard.master')
-@push('styles')
-    <link href="{{ asset('dashboard-assets/demo-1/css/datatables' . ( isDarkMode() ?  '.dark' : '' ) .'.bundle.css') }}" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('dashboard-assets/demo-1/plugins/custom/datatables/datatables.bundle' . ( isArabic() ? '.rtl' : '' ) . '.css')}}" rel="stylesheet" type="text/css" />
-@endpush
 @section('content')
     <!--begin::Basic info-->
     <div class="card mb-5 mb-xl-10">
