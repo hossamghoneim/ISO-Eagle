@@ -144,32 +144,6 @@
                     <!-- Begin :: Col -->
                     <div class="col-md-6">
 
-                        <label class="form-label">{{ __("Twitter") }}</label>
-                        <input type="text" class="form-control" name="twitter_url" value="{{ settings()->get('twitter_url') ?? '' }}" id="twitter_url_inp" placeholder="{{ __("Enter the twitter page url") }}">
-                        <p class="invalid-feedback" id="twitter_url" ></p>
-
-                    </div>
-                    <!-- End   :: Col -->
-
-                </div>
-                <!-- End   :: Input group -->
-
-                <!-- Begin :: Input group -->
-                <div class="fv-row row mb-15">
-
-                    <!-- Begin :: Col -->
-                    <div class="col-md-6">
-
-                        <label class="form-label">{{ __("Instagram") }}</label>
-                        <input type="text" class="form-control" name="instagram_url" value="{{ settings()->get('instagram_url') ?? '' }}" id="instagram_url_inp" placeholder="{{ __("Enter the instagram page url") }}">
-                        <p class="invalid-feedback" id="instagram_url" ></p>
-
-                    </div>
-                    <!-- End   :: Col -->
-
-                    <!-- Begin :: Col -->
-                    <div class="col-md-6">
-
                         <label class="form-label">{{ __("Youtube") }}</label>
                         <input type="text" class="form-control" name="youtube_url" value="{{ settings()->get('youtube_url') ?? '' }}" id="youtube_url_inp" placeholder="{{ __("Enter the youtube channel url") }}">
                         <p class="invalid-feedback" id="youtube_url" ></p>
@@ -177,6 +151,7 @@
                     </div>
                     <!-- End   :: Col -->
 
+
                 </div>
                 <!-- End   :: Input group -->
 
@@ -186,9 +161,9 @@
                     <!-- Begin :: Col -->
                     <div class="col-md-6">
 
-                        <label class="form-label">{{ __("Snapchat") }}</label>
-                        <input type="text" class="form-control" name="snapchat_url" value="{{ settings()->get('snapchat_url') ?? '' }}" id="snapchat_url_inp" placeholder="{{ __("Enter the snapchat url") }}">
-                        <p class="invalid-feedback" id="snapchat_url" ></p>
+                        <label class="form-label">{{ __("Linkedin") }}</label>
+                        <input type="text" class="form-control" name="linkedin_url" value="{{ settings()->get('linkedin_url') ?? '' }}" id="linkedin_url_inp" placeholder="{{ __("Enter the linkedin url") }}">
+                        <p class="invalid-feedback" id="linkedin_url" ></p>
 
                     </div>
                     <!-- End   :: Col -->
@@ -276,11 +251,65 @@
                     <!-- Begin :: Col -->
                     <div class="col-md-6">
 
-                        <label class="form-label">{{ __("logo") }}</label>
+                        <label class="form-label">{{ __("Our vision text") }}</label>
+                        <input type="text" class="form-control" name="our_vision" value="{{ settings()->get('our_vision') ?? '' }}" id="our_vision_inp" placeholder="{{ __("Enter our vision text") }}">
+                        <p class="invalid-feedback" id="our_vision" ></p>
+
+                    </div>
+                    <!-- End   :: Col -->
+
+                    <!-- Begin :: Col -->
+                    <div class="col-md-6">
+
+                        <label class="form-label">{{ __("Our sectors text") }}</label>
+                        <input type="text" class="form-control" name="our_sectors" value="{{ settings()->get('our_sectors') ?? '' }}" id="our_sectors_inp" placeholder="{{ __("Enter our sectors text") }}">
+                        <p class="invalid-feedback" id="our_sectors" ></p>
+
+                    </div>
+                    <!-- End   :: Col -->
+
+                </div>
+                <!-- End   :: Input group -->
+
+                <!-- Begin :: Input group -->
+                <div class="fv-row row mb-15">
+
+                    <!-- Begin :: Col -->
+                    <div class="col-md-6">
+
+                        <label class="form-label">{{ __("What we do text") }}</label>
+                        <input type="text" class="form-control" name="what_we_do" value="{{ settings()->get('what_we_do') ?? '' }}" id="what_we_do_inp" placeholder="{{ __("Enter what we do text") }}">
+                        <p class="invalid-feedback" id="what_we_do" ></p>
+
+                    </div>
+                    <!-- End   :: Col -->
+
+                    <!-- Begin :: Col -->
+                    <div class="col-md-6">
+
+                        <label class="form-label">{{ __("What we do photo") }}</label>
                         <br>
-                        <input type="file" class="d-none" accept="image/*" name="logo" id="logo-uploader">
-                        <button class="btn btn-secondary w-100 image-upload-inp" type="button" > <i class="bi bi-upload fs-8" ></i> {{ settings()->get('logo') ?:  __("no file is selected")   }} </button>
-                        <p class="invalid-feedback" id="logo" ></p>
+                        <input type="file" class="d-none" accept="image/*" name="what_we_do_photo" id="what_we_do_photo-uploader">
+                        <button class="btn btn-secondary w-100 image-upload-inp" type="button" > <i class="bi bi-upload fs-8" ></i> {{ settings()->get('what_we_do_photo') ?:  __("no file is selected")   }} </button>
+                        <p class="invalid-feedback" id="what_we_do_photo" ></p>
+
+                    </div>
+                    <!-- End   :: Col -->
+
+                </div>
+                <!-- End   :: Input group -->
+
+                <!-- Begin :: Input group -->
+                <div class="fv-row row mb-15">
+
+                    <!-- Begin :: Col -->
+                    <div class="col-md-6">
+
+                        <label class="form-label">{{ __("About us home background") }}</label>
+                        <br>
+                        <input type="file" class="d-none" accept="image/*" name="about_us_home_background" id="about_us_home_background-uploader">
+                        <button class="btn btn-secondary w-100 image-upload-inp" type="button" > <i class="bi bi-upload fs-8" ></i> {{ settings()->get('about_us_home_background') ?:  __("no file is selected")   }} </button>
+                        <p class="invalid-feedback" id="about_us_home_background" ></p>
 
 
                     </div>
@@ -289,11 +318,11 @@
                     <!-- Begin :: Col -->
                     <div class="col-md-6">
 
-                        <label class="form-label">{{ __("favicon") }}</label>
+                        <label class="form-label">{{ __("About us page background") }}</label>
                         <br>
-                        <input type="file" class="d-none" accept="image/*" name="favicon" id="favicon-uploader">
-                        <button class="btn btn-secondary w-100 image-upload-inp" type="button" > <i class="bi bi-upload fs-8" ></i> {{ settings()->get('favicon') ?:  __("no file is selected")   }} </button>
-                        <p class="invalid-feedback" id="favicon" ></p>
+                        <input type="file" class="d-none" accept="image/*" name="about_us_page_background" id="about_us_page_background-uploader">
+                        <button class="btn btn-secondary w-100 image-upload-inp" type="button" > <i class="bi bi-upload fs-8" ></i> {{ settings()->get('about_us_page_background') ?:  __("no file is selected")   }} </button>
+                        <p class="invalid-feedback" id="about_us_page_background" ></p>
 
                     </div>
                     <!-- End   :: Col -->

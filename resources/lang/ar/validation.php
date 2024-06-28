@@ -207,7 +207,7 @@ return [
         'twitter_url' => 'رابط تويتر',
         'instagram_url' => 'رابط انستجرام',
         'youtube_url' => 'رابط قناة اليوتيوب',
-        'snapchat_url' => 'رابط سناب شات',
+        'linkedin_url' => 'رابط سناب شات',
         'logo' => 'اللوجو',
         'favicon' => 'ايقونة الموقع',
         'setting_type' => 'نوع الاعدادات',

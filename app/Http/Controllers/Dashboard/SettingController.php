@@ -20,35 +20,37 @@ class SettingController extends Controller
         $this->authorize('update_settings');
 
         $data = $request->validate([
-           'website_name_ar'                                  => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
-           'website_name_en'                                  => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
-           'facebook_url'                                     => [ 'required_if:setting_type,general' ,'url' ,'nullable' , 'string' , 'max:255'  ],
-           'twitter_url'                                      => [ 'required_if:setting_type,general' ,'url' ,'nullable' , 'string' , 'max:255'  ],
-           'instagram_url'                                    => [ 'required_if:setting_type,general' ,'url' ,'nullable' , 'string' , 'max:255'  ],
-           'youtube_url'                                      => [ 'required_if:setting_type,general' ,'url' ,'nullable' , 'string' , 'max:255'  ],
-           'snapchat_url'                                     => [ 'required_if:setting_type,general' ,'url' ,'nullable' , 'string' , 'max:255'  ],
-           'email'                                            => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
-           'phone'                                            => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
-           'whatsapp'                                         => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
-           'tax'                                              => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
-           'maintenance_mode'                                 => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
-           'meta_tag_description_ar'                          => [ 'required_if:setting_type,seo'     ,'nullable' , 'string' , 'max:255'  ],
-           'meta_tag_description_en'                          => [ 'required_if:setting_type,seo'     ,'nullable' , 'string' , 'max:255'  ],
-           'meta_tag_keyword_ar'                              => [ 'required_if:setting_type,seo'     ,'nullable' , 'string' , 'max:255'  ],
-           'meta_tag_keyword_en'                              => [ 'required_if:setting_type,seo'     ,'nullable' , 'string' , 'max:255'  ],
-           'privacy_policy_ar'                                => [ 'required_if:setting_type,website' ,'nullable' , 'string' ],
-           'privacy_policy_en'                                => [ 'required_if:setting_type,website' ,'nullable' , 'string' ],
-           'terms_and_conditions_en'                          => [ 'required_if:setting_type,website' ,'nullable' , 'string' ],
-           'terms_and_conditions_ar'                          => [ 'required_if:setting_type,website' ,'nullable' , 'string' ],
-           'about_us_ar'                                      => [ 'required_if:setting_type,about-website' ,'nullable' , 'string' ],
-           'about_us_en'                                      => [ 'required_if:setting_type,about-website' ,'nullable' , 'string' ],
-           'footer_text_ar'                                   => [ 'required_if:setting_type,about-website' ,'nullable' , 'string', 'max:255' ],
-           'footer_text_en'                                   => [ 'required_if:setting_type,about-website' ,'nullable' , 'string', 'max:255' ],
+            'website_name_ar'                                  => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
+            'website_name_en'                                  => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
+            'facebook_url'                                     => [ 'required_if:setting_type,general' ,'url' ,'nullable' , 'string' , 'max:255'  ],
+            'youtube_url'                                      => [ 'required_if:setting_type,general' ,'url' ,'nullable' , 'string' , 'max:255'  ],
+            'linkedin_url'                                     => [ 'required_if:setting_type,general' ,'url' ,'nullable' , 'string' , 'max:255'  ],
+            'email'                                            => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
+            'phone'                                            => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
+            'whatsapp'                                         => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
+            'tax'                                              => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
+            'maintenance_mode'                                 => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
+            'what_we_do'                                       => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
+            'our_vision'                                       => [ 'required_if:setting_type,general' ,'string' ,'nullable' , 'string' , 'max:500'  ],
+            'our_sectors'                                      => [ 'required_if:setting_type,general' ,'string' ,'nullable' , 'string' , 'max:500'  ],
+            'meta_tag_description_ar'                          => [ 'required_if:setting_type,seo'     ,'nullable' , 'string' , 'max:255'  ],
+            'meta_tag_description_en'                          => [ 'required_if:setting_type,seo'     ,'nullable' , 'string' , 'max:255'  ],
+            'meta_tag_keyword_ar'                              => [ 'required_if:setting_type,seo'     ,'nullable' , 'string' , 'max:255'  ],
+            'meta_tag_keyword_en'                              => [ 'required_if:setting_type,seo'     ,'nullable' , 'string' , 'max:255'  ],
+            'privacy_policy_ar'                                => [ 'required_if:setting_type,website' ,'nullable' , 'string' ],
+            'privacy_policy_en'                                => [ 'required_if:setting_type,website' ,'nullable' , 'string' ],
+            'terms_and_conditions_en'                          => [ 'required_if:setting_type,website' ,'nullable' , 'string' ],
+            'terms_and_conditions_ar'                          => [ 'required_if:setting_type,website' ,'nullable' , 'string' ],
+            'about_us_ar'                                      => [ 'required_if:setting_type,about-website' ,'nullable' , 'string' ],
+            'about_us_en'                                      => [ 'required_if:setting_type,about-website' ,'nullable' , 'string' ],
+            'footer_text_ar'                                   => [ 'required_if:setting_type,about-website' ,'nullable' , 'string', 'max:255' ],
+            'footer_text_en'                                   => [ 'required_if:setting_type,about-website' ,'nullable' , 'string', 'max:255' ],
         ]);
 
 
-        $this->validateFiles('logo','general',$request,$data);
-        $this->validateFiles('favicon','general',$request,$data);
+        $this->validateFiles('about_us_home_background','general',$request,$data);
+        $this->validateFiles('about_us_page_background','general',$request,$data);
+        $this->validateFiles('what_we_do_photo','general',$request,$data);
 
         foreach ( $data as $key => $value )
         {
