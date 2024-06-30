@@ -16,6 +16,7 @@ class VideoResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'cover' => $this->full_cover_path,
             'link' => $this->link
         ];
     }

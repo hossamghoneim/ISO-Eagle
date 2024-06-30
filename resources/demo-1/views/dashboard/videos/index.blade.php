@@ -62,6 +62,7 @@
                             <input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_datatable .form-check-input" value="1"/>
                         </div>
                     </th>
+                    <th>{{ __('Cover') }}</th>
                     <th>{{ __('Link') }}</th>
                     <th>{{ __('date') }}</th>
                     <th class=" min-w-100px">{{ __('actions') }}</th>
@@ -92,6 +93,10 @@
                     </div>
 
                     <div class="modal-body">
+                        <div class="d-flex flex-column justify-content-center">
+                            <label for="cover_inp" class="form-label required text-center fs-6 fw-bold mb-3">{{ __('Cover') }}</label>
+                            <x-dashboard.upload-image-inp  name="cover" :image="null" :directory="null" placeholder="default.svg" type="editable" ></x-dashboard.upload-image-inp>
+                        </div>
                         <div class="fv-row mb-0 fv-plugins-icon-container">
                             <label for="link_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Link') }}</label>
                             <input type="text" name="link" class="form-control form-control-lg form-control-solid" id="link_inp" placeholder="{{ __('Enter valid url') }}" >
@@ -135,6 +140,7 @@
                 $("[name='_method']").remove();
                 $("#crud_form").trigger('reset');
                 $("#crud_form").attr('action', `/dashboard/videos`);
+                $('.image-input-wrapper').css('background-image', `url('/placeholder_images/default.svg')`);
             });
 
 

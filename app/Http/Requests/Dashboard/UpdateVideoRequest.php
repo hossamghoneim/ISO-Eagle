@@ -26,6 +26,7 @@ class UpdateVideoRequest extends FormRequest
         $video = request()->route('video');
 
         return [
+            'cover' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
             "link" => ["required", "string:255", "unique:videos,link,$video->id", 'url']
         ];
     }

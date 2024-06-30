@@ -21,14 +21,21 @@ class VideoController extends Controller
 
     public function store(StoreVideoRequest $request)
     {
-        Video::create($request->validated());
+        $data = $request->validated();
+        $data['cover'] = uploadImageToDirectory( $request->file('cover') , "Videos");
+
+        Video::create($data);
 
         return response(["Video created successfully"]);
     }
 
     public function update(UpdateVideoRequest $request, Video $video)
     {
-        $video->update($request->validated());
+        $data = $request->validated();
+        if($request->has('cover'))
+            $data['cover'] = uploadImageToDirectory( $request->file('cover') , "Videos");
+
+        $video->update($data);
 
         return response(["Video updated successfully"]);
     }
