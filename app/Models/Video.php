@@ -10,8 +10,13 @@ class Video extends Model
     use HasFactory;
 
     protected $guarded = [];
-    protected $appends = ['full_cover_path'];
+    protected $appends = ['full_cover_path', 'title'];
     protected $casts = ['created_at' => 'date:Y-m-d', 'updated_at' => 'date:Y-m-d'];
+
+    public function getTitleAttribute()
+    {
+        return $this->attributes['title_' . app()->getLocale()];
+    }
 
     public function getFullCoverPathAttribute()
     {

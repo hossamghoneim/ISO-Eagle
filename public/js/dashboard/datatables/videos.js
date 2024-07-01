@@ -24,6 +24,7 @@ var KTDatatablesServerSide = function () {
             columns: [
                 { data: 'id' },
                 { data: 'cover' },
+                { data: 'title' },
                 { data: 'link' },
                 { data: 'created_at' },
                 { data: null },
@@ -69,7 +70,7 @@ var KTDatatablesServerSide = function () {
                             <div>
                                 <!--begin::Info-->
                                 <div class="d-flex flex-column justify-content-center">
-                                    <a href="${row.link}" target="_blank" class="mb-1 text-gray-800 text-hover-primary">${row.link}</a>
+                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.title}</a>
                                 </div>
                                 <!--end::Info-->
                             </div>
@@ -78,6 +79,20 @@ var KTDatatablesServerSide = function () {
                 },
                 {
                     targets: 3,
+                    render: function (data, type, row) {
+                        return `
+                            <div>
+                                <!--begin::Info-->
+                                <div class="d-flex flex-column justify-content-center">
+                                    <a href="${row.link}" target="_blank" class="mb-1 text-gray-800 text-hover-primary">${row.link}</a>
+                                </div>
+                                <!--end::Info-->
+                            </div>
+                        `;
+                    }
+                },
+                {
+                    targets: 4,
                     render: function (data, type, row) {
                         return `
                             <div>
@@ -163,6 +178,8 @@ var KTDatatablesServerSide = function () {
 
                 $("#form_title").text(__('Edit video'));
                 $('.image-input-wrapper').css('background-image', `url('${data.full_cover_path}')`);
+                $("#title_ar_inp").val(data.title_ar);
+                $("#title_en_inp").val(data.title_en);
                 $("#link_inp").val(data.link);
                 $("#crud_form").attr('action', `/dashboard/${dbTable}/${data.id}`);
                 $("#crud_form").prepend(`<input type="hidden" name="_method" value="PUT">`);

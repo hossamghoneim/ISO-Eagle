@@ -63,6 +63,7 @@
                         </div>
                     </th>
                     <th>{{ __('Cover') }}</th>
+                    <th>{{ __('Title') }}</th>
                     <th>{{ __('Link') }}</th>
                     <th>{{ __('date') }}</th>
                     <th class=" min-w-100px">{{ __('actions') }}</th>
@@ -96,6 +97,16 @@
                         <div class="d-flex flex-column justify-content-center">
                             <label for="cover_inp" class="form-label required text-center fs-6 fw-bold mb-3">{{ __('Cover') }}</label>
                             <x-dashboard.upload-image-inp  name="cover" :image="null" :directory="null" placeholder="default.svg" type="editable" ></x-dashboard.upload-image-inp>
+                        </div>
+                        <div class="fv-row mb-0 fv-plugins-icon-container">
+                            <label for="title_ar_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Title ar') }}</label>
+                            <input type="text" name="title_ar" class="form-control form-control-lg form-control-solid" id="title_ar_inp" placeholder="{{ __('Enter title in arabic') }}" >
+                            <div class="fv-plugins-message-container invalid-feedback" id="title_ar"></div>
+                        </div>
+                        <div class="fv-row mb-0 fv-plugins-icon-container">
+                            <label for="title_en_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Title en') }}</label>
+                            <input type="text" name="title_en" class="form-control form-control-lg form-control-solid" id="title_en_inp" placeholder="{{ __('Enter title in english') }}" >
+                            <div class="fv-plugins-message-container invalid-feedback" id="title_en"></div>
                         </div>
                         <div class="fv-row mb-0 fv-plugins-icon-container">
                             <label for="link_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Link') }}</label>

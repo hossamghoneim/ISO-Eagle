@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('link')->unique();
             $table->string('cover');
+            $table->string('title_ar');
+            $table->string('title_en');
             $table->timestamps();
         });
     }

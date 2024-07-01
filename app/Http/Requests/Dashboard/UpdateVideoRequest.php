@@ -27,6 +27,8 @@ class UpdateVideoRequest extends FormRequest
 
         return [
             'cover' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
+            "title_ar" => ["required", "string:50"],
+            "title_en" => ["required", "string:50"],
             "link" => ["required", "string:255", "unique:videos,link,$video->id", 'url']
         ];
     }

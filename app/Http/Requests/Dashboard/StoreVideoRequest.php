@@ -25,6 +25,8 @@ class StoreVideoRequest extends FormRequest
     {
         return [
             'cover' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
+            "title_ar" => ["required", "string:50"],
+            "title_en" => ["required", "string:50"],
             "link" => ["required", "string:255", "unique:videos", "url"],
         ];
     }
