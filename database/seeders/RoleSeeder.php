@@ -27,7 +27,8 @@ class RoleSeeder extends Seeder
             'categories',
             'features',
             'brands',
-            'videos'
+            'videos',
+            'contact_requests'
         ];
 
         $actions =

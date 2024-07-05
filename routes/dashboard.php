@@ -21,6 +21,7 @@ Route::group([ 'prefix' => 'dashboard' , 'namespace' => 'Dashboard', 'as' => 'da
     Route::resource('brands','BrandController')->except(['create', 'edit', 'show']);
     Route::delete("videos/delete-selected", "VideoController@deleteSelected");
     Route::resource('videos','VideoController')->except(['create', 'edit', 'show']);
+    Route::resource('contact-requests','ContactRequestController')->except(['create', 'edit', 'store', 'update']);
     Route::resource('roles','RoleController');
     Route::resource('settings','SettingController')->only(['index','store']);
 

@@ -96,6 +96,17 @@
                     </div>
                 @endcan
 
+                @can('view_contact_requests')
+                    <div class="menu-item">
+                        <a class="menu-link {{ isTabActive('dashboard.contact-requests*') }}" href="{{ route('dashboard.contact-requests.index') }}"  data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                        <span class="menu-icon">
+                                <i class="fa fa-address-book"></i>
+                        </span>
+                        <span class="menu-title"> {{ __("contact requests") }}</span>
+                        </a>
+                    </div>
+                @endcan
+
                 @can('view_settings')
                     <div class="menu-item">
                         <a class="menu-link {{ isTabActive('dashboard.settings*') }}" href="{{ route('dashboard.settings.index') }}"  data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
