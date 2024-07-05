@@ -30,6 +30,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::get('all-videos', 'VideoController@index');
     Route::get('home', 'HomeController@index');
     Route::get('general', 'HomeController@general');
+    Route::post('contact-us', 'ContactUsInvokableController');
 
     Route::middleware(['auth:sanctum'])->group(function () {
         Route::apiResource('admins', 'AdminController');
