@@ -171,7 +171,7 @@
                 $(`[name='product_id']`).val('').attr('selected',true);
                 $(`[name='product_id']`).trigger('change');
                 $("#crud_form").attr('action', `/dashboard/features`);
-                $('.image-input-wrapper').css('background-image', `url('/placeholder_images/default.svg')`);
+                $('.image-input-wrapper').css('background-image', `url('/public/placeholder_images/default.svg')`);
             });
 
 
