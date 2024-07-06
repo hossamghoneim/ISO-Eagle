@@ -64,10 +64,14 @@ class HomeController extends Controller
             'our_sectors' => settings()->get('our_sectors'),
             'privacy_policy_text' => $lang == 'ar' ? settings()->get('privacy_policy_ar') : settings()->get('privacy_policy_en'),
             'terms_and_conditions_text' => $lang == 'ar' ? settings()->get('terms_and_conditions_ar') : settings()->get('terms_and_conditions_en'),
-            'phone' => settings()->get('phone'),
-            'email' => settings()->get('email'),
-            'address' => settings()->get('address'),
-            'location' => settings()->get('location'),
+            'footer' => [
+                'phone' => settings()->get('phone'),
+                'email' => settings()->get('email'),
+                'address' => settings()->get('address'),
+                'location' => settings()->get('location'),
+                'opening_hours' => settings()->get('opening_hours'),
+                'brief' => settings()->get('home_footer_brief'),
+            ]
         ]);
     }
 }

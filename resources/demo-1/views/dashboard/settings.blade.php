@@ -245,6 +245,32 @@
                     <!-- Begin :: Col -->
                     <div class="col-md-6">
 
+                        <label class="form-label">{{ __("Opening hours") }}</label>
+                        <input type="text" class="form-control" name="opening_hours" value="{{ settings()->get('opening_hours') ?? '' }}" id="opening_hours_inp" placeholder="{{ __("Enter opening hours") }}">
+                        <p class="invalid-feedback" id="opening_hours" ></p>
+
+                    </div>
+                    <!-- End   :: Col -->
+
+                    <!-- Begin :: Col -->
+                    <div class="col-md-6">
+
+                        <label class="form-label">{{ __("Home footer brief") }}</label>
+                        <input type="text" class="form-control" name="home_footer_brief" value="{{ settings()->get('home_footer_brief') ?? '' }}" id="home_footer_brief_inp" placeholder="{{ __("Enter home footer brief") }}">
+                        <p class="invalid-feedback" id="home_footer_brief" ></p>
+
+                    </div>
+                    <!-- End   :: Col -->
+
+                </div>
+                <!-- End   :: Input group -->
+
+                <!-- Begin :: Input group -->
+                <div class="fv-row row mb-15">
+
+                    <!-- Begin :: Col -->
+                    <div class="col-md-6">
+
                         <label class="form-label">{{ __("Tax in percentage") }}</label>
                         <input type="number" min="0" class="form-control" name="tax" value="{{ settings()->get('tax') ?? '' }}" id="tax_inp" placeholder="{{ __("Enter the tax in percentage") }}">
                         <p class="invalid-feedback" id="tax" ></p>

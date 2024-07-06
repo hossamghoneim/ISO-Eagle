@@ -35,6 +35,8 @@ class SettingController extends Controller
             'whatsapp'                                         => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
             'address'                                          => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
             'location'                                         => [ 'required_if:setting_type,general' ,'nullable' , 'string' ],
+            'opening_hours'                                    => [ 'required_if:setting_type,general' ,'nullable' , 'string' ],
+            'home_footer_brief'                                => [ 'required_if:setting_type,general' ,'nullable' , 'string' ],
             'tax'                                              => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
             'maintenance_mode'                                 => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
             'what_we_do'                                       => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
