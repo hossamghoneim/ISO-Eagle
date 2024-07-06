@@ -62,6 +62,7 @@
                             <input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_datatable .form-check-input" value="1"/>
                         </div>
                     </th>
+                    <th>{{ __('Product') }}</th>
                     <th>{{ __('Headline') }}</th>
                     <th>{{ __('Details') }}</th>
                     <th>{{ __('Icon') }}</th>
@@ -97,6 +98,16 @@
                         <div class="d-flex flex-column justify-content-center">
                             <label for="image_inp" class="form-label required text-center fs-6 fw-bold mb-3">{{ __('Icon') }}</label>
                             <x-dashboard.upload-image-inp name="icon" :image="null" :directory="null" placeholder="default.svg" type="editable"></x-dashboard.upload-image-inp>
+                        </div>
+                        <div class="fv-row mb-2 fv-plugins-icon-container">
+                            <label for="product_id_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Product') }}</label>
+                            <select class="form-select form-select-solid" data-control="select2" name="product_id" id="product_id_inp" data-placeholder="{{ __("Choose the product") }}" data-dir="{{ isArabic() ? 'rtl' : 'ltr' }}">
+                                <option value="" selected></option>
+                                @foreach($products as $product)
+                                    <option value="{{ $product->id }}"> {{ $product->name }} </option>
+                                @endforeach
+                            </select>
+                            <div class="fv-plugins-message-container invalid-feedback" id="product_id"></div>
                         </div>
                         <div class="fv-row mb-2 fv-plugins-icon-container">
                             <label for="headline_ar_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Headline Ar') }}</label>
@@ -157,6 +168,8 @@
                 $("#form_title").text(__('add new feature'));
                 $("[name='_method']").remove();
                 $("#crud_form").trigger('reset');
+                $(`[name='product_id']`).val('').attr('selected',true);
+                $(`[name='product_id']`).trigger('change');
                 $("#crud_form").attr('action', `/dashboard/features`);
                 $('.image-input-wrapper').css('background-image', `url('/placeholder_images/default.svg')`);
             });

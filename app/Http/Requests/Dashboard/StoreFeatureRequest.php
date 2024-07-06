@@ -23,6 +23,7 @@ class StoreFeatureRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'product_id' => ['required', 'exists:products,id'],
             'icon' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
             'headline_ar' => ['required', 'min:3', 'string', "unique:features", new NotNumbersOnly()],
             'headline_en' => ['required', 'min:3', 'string', "unique:features", new NotNumbersOnly()],

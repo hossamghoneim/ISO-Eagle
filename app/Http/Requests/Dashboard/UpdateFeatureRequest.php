@@ -27,6 +27,7 @@ class UpdateFeatureRequest extends FormRequest
         $feature = request()->route('feature');
 
         return [
+            'product_id' => ['required', 'exists:products,id'],
             'icon' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
             "headline_ar" => ["required", "string:255", "unique:features,headline_ar,$feature->id", new NotNumbersOnly()],
             "headline_en" => ["required", "string:255", "unique:features,headline_en,$feature->id", new NotNumbersOnly()],

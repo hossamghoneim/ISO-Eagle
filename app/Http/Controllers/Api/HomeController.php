@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\BrandResource;
+use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ServiceResource;
 use App\Http\Resources\VideoResource;
 use App\Models\Brand;
+use App\Models\Category;
 use App\Models\Service;
 use App\Models\Video;
 
@@ -14,14 +16,25 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $lang = request()->header('Content-Language') ?? 'ar';
         $brands = Brand::limit(5)->get();
         $services = Service::limit(3)->get();
         $videos = Video::limit(6)->get();
+        $categories = Category::limit(9)->get();
 
         return $this->success('', [
             'brands' => BrandResource::collection($brands),
+            'about_us' => [
+                'description' => $lang == 'ar' ? settings()->get('about_us_ar') : settings()->get('about_us_en'),
+                'background' => asset(getImagePathFromDirectory(settings()->get('about_us_home_background'), 'Settings', "default.svg"))
+            ],
+            'what_we_do' => [
+                'description' => settings()->get('what_we_do'),
+                'photo' => asset(getImagePathFromDirectory(settings()->get('what_we_do_photo'), 'Settings', "default.svg")),
+            ],
             'services' => ServiceResource::collection($services),
-            'videos' => VideoResource::collection($videos)
+            'videos' => VideoResource::collection($videos),
+            'categories' => CategoryResource::collection($categories)
         ]);
     }
 

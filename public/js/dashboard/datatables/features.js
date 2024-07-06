@@ -23,6 +23,7 @@ var KTDatatablesServerSide = function () {
             },
             columns: [
                 { data: 'id' },
+                { data: 'product_id' },
                 { data: 'headline' },
                 { data: 'details' },
                 { data: 'icon' },
@@ -41,7 +42,21 @@ var KTDatatablesServerSide = function () {
                     }
                 },
                 {
-                    targets: 3,
+                    targets: 1,
+                    render: function (data, type, row) {
+                        return `
+                            <div>
+                                <!--begin::Info-->
+                                <div class="d-flex flex-column justify-content-center">
+                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.product.name}</a>
+                                </div>
+                                <!--end::Info-->
+                            </div>
+                        `;
+                    }
+                },
+                {
+                    targets: 4,
                     orderable: false,
                     render: function (data, type, row) {
                         return `
@@ -62,10 +77,6 @@ var KTDatatablesServerSide = function () {
                             <!--end::Overlay-->
                         `;
                     }
-                },
-                {
-                    targets: 4,
-                    orderable: false,
                 },
                 {
                     targets: -1,
@@ -142,6 +153,8 @@ var KTDatatablesServerSide = function () {
                 $("#headline_en_inp").val(data.headline_en);
                 $("#details_ar_inp").val(data.details_ar);
                 $("#details_en_inp").val(data.details_en);
+                $("#product_id_inp").val(data.product_id).attr('selected', true);
+                $(`#product_id_inp`).trigger('change');
                 $("#crud_form").attr('action', `/dashboard/${dbTable}/${data.id}`);
                 $("#crud_form").prepend(`<input type="hidden" name="_method" value="PUT">`);
                 $("#crud_modal").modal('show');

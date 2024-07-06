@@ -63,6 +63,17 @@
                     </div>
                 @endcan
 
+                @can('view_products')
+                    <div class="menu-item">
+                        <a class="menu-link {{ isTabActive('dashboard.products*') }}" href="{{ route('dashboard.products.index') }}"  data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                        <span class="menu-icon">
+                                <i class="fa fa-shopping-cart"></i>
+                        </span>
+                        <span class="menu-title"> {{ __("products") }}</span>
+                        </a>
+                    </div>
+                @endcan
+
                 @can('view_features')
                     <div class="menu-item">
                         <a class="menu-link {{ isTabActive('dashboard.features*') }}" href="{{ route('dashboard.features.index') }}"  data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">

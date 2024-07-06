@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\StoreFeatureRequest;
 use App\Http\Requests\Dashboard\UpdateFeatureRequest;
 use App\Models\Feature;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class FeatureController extends Controller
@@ -15,11 +16,13 @@ class FeatureController extends Controller
         $this->authorize('view_features');
 
         if ($request->ajax()){
-            $data = getModelData( model: new Feature() );
+            $data = getModelData( model: new Feature(), relations: ['product' => ['id', 'name_ar', 'name_en', 'description_ar', 'description_en']] );
             return response()->json($data);
         }
 
-        return view('dashboard.features.index');
+        $products = Product::get();
+
+        return view('dashboard.features.index', compact('products'));
     }
 
     public function store(StoreFeatureRequest $request)

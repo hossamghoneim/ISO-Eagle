@@ -23,6 +23,7 @@ class StoreCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'icon' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
             'name_ar' => ['required', 'min:3', 'string', "unique:categories", new NotNumbersOnly()],
             'name_en' => ['required', 'min:3', 'string', "unique:categories", new NotNumbersOnly()],
         ];

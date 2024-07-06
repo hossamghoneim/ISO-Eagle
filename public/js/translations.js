@@ -20,6 +20,8 @@ let translations = {
         "Edit brand": "تعديل الماركة",
         "Add new video": "أضف فيديو جديد",
         "Edit video": "تعديل الفيديو",
+        "Add new product": "أضف منتج جديد",
+        "Edit product": "تعديل المنتج",
         "Are you sure from deleting this " : "هل انت متاكد من حذف  ",
         "Yes, Delete !" : "نعــم, أحذف !",
         "No, Cancel" : "لا , ألغي",

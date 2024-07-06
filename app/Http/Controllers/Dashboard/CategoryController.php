@@ -26,7 +26,10 @@ class CategoryController extends Controller
     {
         $this->authorize('create_categories');
 
-        Category::create($request->validated());
+        $data = $request->validated();
+        $data['icon'] = uploadImageToDirectory( $request->file('icon') , "Categories");
+
+        Category::create($data);
 
         return response(["Category created successfully"]);
     }
@@ -35,7 +38,11 @@ class CategoryController extends Controller
     {
         $this->authorize('update_categories');
 
-        $category->update($request->validated());
+        $data = $request->validated();
+        if($request->has('icon'))
+            $data['icon'] = uploadImageToDirectory( $request->file('icon') , "Categories");
+
+        $category->update($data);
 
         return response(["Category updated successfully"]);
     }

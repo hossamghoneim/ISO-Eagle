@@ -1,12 +1,12 @@
 @extends('partials.dashboard.master')
 @section('content')
     <!--begin::Basic info-->
-    <div class="card mb-5 mb-xl-10">
+    <div class="card mb-5 mb-x-10">
         <!--begin::Card header-->
         <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
             <!--begin::Card title-->
             <div class="card-title m-0">
-                <h3 class="fw-bold m-0">{{ __('Categories List') }}</h3>
+                <h3 class="fw-bold m-0">{{ __('Products list') }}</h3>
             </div>
             <!--end::Card title-->
         </div>
@@ -25,7 +25,7 @@
                         </svg>
                     </span>
                     <!--end::Svg Icon-->
-                    <input type="text" data-kt-docs-table-filter="search" class="form-control form-control-solid w-250px ps-15" placeholder="{{ __('Search for categories') }}">
+                    <input type="text" data-kt-docs-table-filter="search" class="form-control form-control-solid w-250px ps-15" placeholder="{{ __('Search for products') }}">
                 </div>
                 <!--end::Search-->
                 <!--begin::Toolbar-->
@@ -39,14 +39,14 @@
                             <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="currentColor"></rect>
                         </svg>
                     </span>
-                        <!--end::Svg Icon-->{{ __('add new category') }}</button>
+                        <!--end::Svg Icon-->{{ __('Add product') }}</button>
                     <!--end::Add customer-->
                 </div>
                 <!--end::Toolbar-->
                 <!--begin::Group actions-->
                 <div class="d-flex justify-content-end align-items-center d-none" data-kt-docs-table-toolbar="selected">
                     <div class="fw-bold me-5">
-                        <span class="me-2" data-kt-docs-table-select="selected_count"></span>{{ __('selected item') }}</div>
+                        <span class="me-2" data-kt-docs-table-select="selected_count"></span>{{ __('Selected item') }}</div>
                     <button type="button" class="btn btn-danger" data-kt-docs-table-select="delete_selected">{{ __('delete') }}</button>
                 </div>
                 <!--end::Group actions-->
@@ -63,7 +63,7 @@
                         </div>
                     </th>
                     <th>{{ __('Name') }}</th>
-                    <th>{{ __('Icon') }}</th>
+                    <th>{{ __('Category') }}</th>
                     <th>{{ __('date') }}</th>
                     <th class=" min-w-100px">{{ __('actions') }}</th>
                 </tr>
@@ -78,13 +78,13 @@
     <!--end::Basic info-->
 
     {{-- begin::Add Country Modal --}}
-    <form id="crud_form" class="ajax-form" action="{{ route('dashboard.categories.store') }}" method="post" data-success-callback="onAjaxSuccess" data-error-callback="onAjaxError">
+    <form id="crud_form" class="ajax-form" action="{{ route('dashboard.products.store') }}" method="post" data-success-callback="onAjaxSuccess" data-error-callback="onAjaxError">
         @csrf
         <div class="modal fade" tabindex="-1" id="crud_modal">
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="form_title">{{ __('add new category') }}</h5>
+                        <h5 class="modal-title" id="form_title">{{ __('Add new product') }}</h5>
                         <!--begin::Close-->
                         <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
                             <span class="svg-icon svg-icon-2x"></span>
@@ -93,23 +93,72 @@
                     </div>
 
                     <div class="modal-body">
-                        <div class="d-flex flex-column justify-content-center">
-                            <label for="image_inp" class="form-label required text-center fs-6 fw-bold mb-3">{{ __('Icon') }}</label>
-                            <x-dashboard.upload-image-inp name="icon" :image="null" :directory="null" placeholder="default.svg" type="editable"></x-dashboard.upload-image-inp>
+                        <div class="container">
+                            <div class="d-flex justify-content-center py-4">
+                                <!-- Structure Image Upload -->
+                                <div class="d-flex flex-column align-items-center mx-10">
+                                    <label for="structure_image_inp" class="form-label required text-center fs-6 fw-bold mb-3">
+                                        {{ __('Structure image') }}
+                                    </label>
+                                    <x-dashboard.upload-image-inp
+                                        name="structure_image"
+                                        :image="null"
+                                        :directory="null"
+                                        placeholder="default.svg"
+                                        type="editable"
+                                    ></x-dashboard.upload-image-inp>
+                                </div>
+
+                                <!-- Panel Image Upload -->
+                                <div class="d-flex flex-column align-items-center mx-10">
+                                    <label for="panel_image_inp" class="form-label required text-center fs-6 fw-bold mb-3">
+                                        {{ __('Panel image') }}
+                                    </label>
+                                    <x-dashboard.upload-image-inp
+                                        name="panel_image"
+                                        :image="null"
+                                        :directory="null"
+                                        placeholder="default.svg"
+                                        type="editable"
+                                    ></x-dashboard.upload-image-inp>
+                                </div>
+                            </div>
                         </div>
-                        <div class="fv-row mb-2 fv-plugins-icon-container">
-                            <label for="name_ar_inp"
-                                class="form-label required fs-6 fw-bold mb-3">{{ __('Name ar') }}</label>
-                            <input type="text" name="name_ar" class="form-control form-control-lg form-control-solid"
-                                id="name_ar_inp" placeholder="{{ __('Name ar') }}">
+
+                        <div class="fv-row mb-4 fv-plugins-icon-container">
+                            <label for="category_id_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Category') }}</label>
+                            <select class="form-select form-select-solid" data-control="select2" name="category_id" id="category_id_inp" data-placeholder="{{ __("Choose the category") }}" data-dir="{{ isArabic() ? 'rtl' : 'ltr' }}">
+                                <option value="" selected></option>
+                                @foreach($categories as $categroy)
+                                    <option value="{{ $categroy->id }}"> {{ $categroy->name }} </option>
+                                @endforeach
+                            </select>
+                            <div class="fv-plugins-message-container invalid-feedback" id="category_id"></div>
+                        </div>
+                        <div class="fv-row mb-4 fv-plugins-icon-container">
+                            <label for="name_ar_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Name ar') }}</label>
+                            <input type="text" name="name_ar" class="form-control form-control-lg form-control-solid" id="name_ar_inp" placeholder="{{ __('Name ar') }}" >
                             <div class="fv-plugins-message-container invalid-feedback" id="name_ar"></div>
                         </div>
-                        <div class="fv-row mb-2 fv-plugins-icon-container">
-                            <label for="name_en_inp"
-                                class="form-label required fs-6 fw-bold mb-3">{{ __('Name en') }}</label>
-                            <input type="text" name="name_en" class="form-control form-control-lg form-control-solid"
-                                id="name_en_inp" placeholder="{{ __('Name en') }}">
+                        <div class="fv-row mb-4 fv-plugins-icon-container">
+                            <label for="name_en_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Name en') }}</label>
+                            <input type="text" name="name_en" class="form-control form-control-lg form-control-solid" id="name_en_inp" placeholder="{{ __('Name en') }}" >
                             <div class="fv-plugins-message-container invalid-feedback" id="name_en"></div>
+                        </div>
+                        <div class="fv-row mb-4 fv-plugins-icon-container">
+                            <label for="description_ar_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Description ar') }}</label>
+                            <input type="text" name="description_ar" class="form-control form-control-lg form-control-solid" id="description_ar_inp" placeholder="{{ __('Description ar') }}" >
+                            <div class="fv-plugins-message-container invalid-feedback" id="description_ar"></div>
+                        </div>
+                        <div class="fv-row mb-0 fv-plugins-icon-container">
+                            <label for="description_en_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Description en') }}</label>
+                            <input type="text" name="description_en" class="form-control form-control-lg form-control-solid" id="description_en_inp" placeholder="{{ __('Description en') }}" >
+                            <div class="fv-plugins-message-container invalid-feedback" id="description_en"></div>
+                        </div>
+                        <div class="fv-row mb-0 fv-plugins-icon-container" id="images_container">
+                            <label for="images_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Images') }}</label>
+                            <input type="file" name="images[]" class="form-control form-control-lg form-control-solid" id="images_inp" multiple>
+                            <div class="fv-plugins-message-container invalid-feedback" id="images"></div>
                         </div>
                     </div>
 
@@ -120,7 +169,7 @@
                                 {{ __('Save') }}
                             </span>
                             <span class="indicator-progress">
-                                {{ __('Please wait ...') }} <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                {{ __('Please wait....') }} <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                             </span>
                         </button>
                     </div>
@@ -129,26 +178,25 @@
         </div>
     </form>
     {{-- end::Add Country Modal --}}
-    <div class="row attachments">
-    </div>
 
 @endsection
 @push('scripts')
     <script src="{{ asset('js/dashboard/global/datatable-config.js') }}"></script>
     <script src="{{ asset('js/dashboard/datatables/datatables.bundle.js') }}"></script>
-    <script src="{{ asset('js/dashboard/datatables/categories.js') }}"></script>
+    <script src="{{ asset('js/dashboard/datatables/products.js') }}"></script>
     <script src="{{ asset('js/dashboard/crud-operations.js') }}"></script>
-    <script src="{{ asset('dashboard-assets/demo-1/plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
 
     <script>
         $(document).ready(function () {
             $("#add_btn").click(function (e) {
                 e.preventDefault();
 
-                $("#form_title").text(__('add new category'));
+                $("#form_title").text( __('Add new product') );
                 $("[name='_method']").remove();
                 $("#crud_form").trigger('reset');
-                $("#crud_form").attr('action', `/dashboard/categories`);
+                $(`[name='category_id']`).val('').attr('selected',true);
+                $(`[name='category_id']`).trigger('change');
+                $("#crud_form").attr('action', `/dashboard/products`);
                 $('.image-input-wrapper').css('background-image', `url('/placeholder_images/default.svg')`);
             });
 

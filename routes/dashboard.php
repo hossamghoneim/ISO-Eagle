@@ -15,6 +15,8 @@ Route::group([ 'prefix' => 'dashboard' , 'namespace' => 'Dashboard', 'as' => 'da
     Route::resource('services','ServiceController')->except(['create', 'edit', 'show']);
     Route::delete("categories/delete-selected", "CategoryController@deleteSelected");
     Route::resource('categories','CategoryController')->except(['create', 'edit', 'show']);
+    Route::delete("products/delete-selected", "ProductController@deleteSelected");
+    Route::resource('products','ProductController')->except(['create', 'edit']);
     Route::delete("features/delete-selected", "FeatureController@deleteSelected");
     Route::resource('features','FeatureController')->except(['create', 'edit', 'show']);
     Route::delete("brands/delete-selected", "BrandController@deleteSelected");

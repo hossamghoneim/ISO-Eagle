@@ -24,6 +24,7 @@ var KTDatatablesServerSide = function () {
             columns: [
                 { data: 'id' },
                 { data: 'name' },
+                { data: 'icon' },
                 { data: 'created_at' },
                 { data: null },
             ],
@@ -36,6 +37,29 @@ var KTDatatablesServerSide = function () {
                             <div class="form-check form-check-sm form-check-custom form-check-solid">
                                 <input class="form-check-input" type="checkbox" value="${data}" />
                             </div>`;
+                    }
+                },
+                {
+                    targets: 2,
+                    orderable: false,
+                    render: function (data, type, row) {
+                        return `
+                            <!--begin::Overlay-->
+                            <a class="d-block overlay" data-action="preview_attachments" href="#">
+                                <!--begin::Image-->
+                                <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-100px"
+                                    style="background-image:url('${row.full_icon_path}')">
+                                </div>
+                                <!--end::Image-->
+
+                                <!--begin::Action-->
+                                <div class="overlay-layer card-rounded bg-dark bg-opacity-25 shadow">
+                                    <i class="bi bi-eye-fill text-white fs-3x"></i>
+                                </div>
+                                <!--end::Action-->
+                            </a>
+                            <!--end::Overlay-->
+                        `;
                     }
                 },
                 {
@@ -91,6 +115,7 @@ var KTDatatablesServerSide = function () {
                 restoreUrl: null
             });
             KTMenu.createInstances();
+            handlePreviewAttachments();
         });
     }
 
@@ -106,12 +131,42 @@ var KTDatatablesServerSide = function () {
                 let currentBtnIndex = $(editButtons).index(d)
                 let data = datatable.row(currentBtnIndex).data();
 
+                $('.image-input-wrapper').css('background-image', `url('${data.full_icon_path}')`);
                 $("#form_title").text(__('Edit category'));
                 $("#name_ar_inp").val(data.name_ar);
                 $("#name_en_inp").val(data.name_en);
                 $("#crud_form").attr('action', `/dashboard/${dbTable}/${data.id}`);
                 $("#crud_form").prepend(`<input type="hidden" name="_method" value="PUT">`);
                 $("#crud_modal").modal('show');
+            })
+        });
+    }
+
+    var handlePreviewAttachments = () => {
+        // Select all edit buttons
+        const previewButtons = $('[data-action="preview_attachments"]');
+
+        $.each(previewButtons, function (indexInArray, button) {
+            $(button).on('click', function (e) {
+                e.preventDefault();
+
+                let data = datatable.row(indexInArray).data();
+                $(".attachments").html('');
+
+                $(".attachments").append(`
+                    <!--begin::Overlay-->
+                    <a class="d-block overlay" data-fslightbox="lightbox-basic" href="${data.full_icon_path}">
+                        <!--begin::Action-->
+                        <div class="overlay-layer card-rounded bg-dark bg-opacity-25 shadow">
+                            <i class="bi bi-eye-fill text-white fs-3x"></i>
+                        </div>
+                        <!--end::Action-->
+
+                    </a>
+                    <!--end::Overlay-->
+                `);
+                refreshFsLightbox();
+                $("[data-fslightbox='lightbox-basic']:first").trigger('click');
             })
         });
     }
@@ -128,6 +183,7 @@ var KTDatatablesServerSide = function () {
                 url: `/dashboard/${dbTable}/delete-selected`,
                 restoreUrl: null
             });
+            handlePreviewAttachments();
         }
     }
 }();

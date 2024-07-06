@@ -15,6 +15,11 @@ class Feature extends Model
 
     protected $casts = ['created_at' => 'date:Y-m-d', 'updated_at' => 'date:Y-m-d'];
 
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
     public function getHeadlineAttribute()
     {
         return $this->attributes[ 'headline_' . app()->getLocale() ];

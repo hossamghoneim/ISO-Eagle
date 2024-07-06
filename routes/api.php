@@ -28,6 +28,8 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::get('all-categories', 'CategoryController@index');
     Route::get('all-brands', 'BrandController@index');
     Route::get('all-videos', 'VideoController@index');
+    Route::get('all-products', 'ProductController@index');
+    Route::get('products/{product}', 'ProductController@show');
     Route::get('home', 'HomeController@index');
     Route::get('general', 'HomeController@general');
     Route::post('contact-us', 'ContactUsInvokableController');
