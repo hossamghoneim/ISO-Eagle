@@ -13,7 +13,7 @@ class StoreVideoRequest extends FormRequest
      */
     public function authorize()
     {
-        return abilities()->contains('create_videos');
+        return true;
     }
 
     /**
