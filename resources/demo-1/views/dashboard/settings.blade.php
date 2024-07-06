@@ -55,6 +55,12 @@
                     </li>
                     <!--end::Nav item-->
 
+                    <!--begin::Nav item-->
+                    <li class="nav-item">
+                        <a class="nav-link text-active-primary me-6 setting-label" id="slider-settings-label" href="javascript:" onclick="changeSettingView('slider')" >{{ __("Slider") }}</a>
+                    </li>
+                    <!--end::Nav item-->
+
                 </ul>
             </div>
             <!--begin::Navs-->
@@ -200,6 +206,32 @@
                         <label class="form-label">{{ __("Whatsapp") }}</label>
                         <input type="text" class="form-control" name="whatsapp" value="{{ settings()->get('whatsapp') ?? '' }}" id="whatsapp_inp" placeholder="{{ __("Enter the whatsapp") }}">
                         <p class="invalid-feedback" id="whatsapp" ></p>
+
+                    </div>
+                    <!-- End   :: Col -->
+
+                </div>
+                <!-- End   :: Input group -->
+
+                <!-- Begin :: Input group -->
+                <div class="fv-row row mb-15">
+
+                    <!-- Begin :: Col -->
+                    <div class="col-md-6">
+
+                        <label class="form-label">{{ __("Address") }}</label>
+                        <input type="text" class="form-control" name="address" value="{{ settings()->get('address') ?? '' }}" id="address_inp" placeholder="{{ __("Enter the address") }}">
+                        <p class="invalid-feedback" id="address" ></p>
+
+                    </div>
+                    <!-- End   :: Col -->
+
+                    <!-- Begin :: Col -->
+                    <div class="col-md-6">
+
+                        <label class="form-label">{{ __("Location") }}</label>
+                        <input type="text" class="form-control" name="location" value="{{ settings()->get('location') ?? '' }}" id="location_inp" placeholder="{{ __('<iframe src="" ></iframe>') }}">
+                        <p class="invalid-feedback" id="location" ></p>
 
                     </div>
                     <!-- End   :: Col -->
@@ -621,6 +653,172 @@
     </div>
     <!-- End   :: About Website Settings Card -->
 
+    <!-- Begin :: About Website Settings Card -->
+    <div class="card card-flush setting-card" style="display:none" id="slider-settings-card">
+
+        <!-- Begin :: Card header-->
+        <div class="card-header pt-8">
+
+            <div class="card-title">
+                <h2>{{ __("Slider") }}</h2>
+            </div>
+
+            <div class="card-title">
+
+                <!-- begin :: Submit btn -->
+                <button type="submit" class="btn btn-primary mx-4" id="submit-btn-slider">
+
+                    <span class="indicator-label">{{ __("Save") }}</span>
+
+                    <!-- begin :: Indicator -->
+                    <span class="indicator-progress">{{ __("Please wait ...") }}
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    <!-- end   :: Indicator -->
+
+                </button>
+                <!-- end   :: Submit btn -->
+
+            </div>
+
+        </div>
+        <!-- End   :: Card header-->
+
+        <!-- Begin :: Card body -->
+        <div class="card-body">
+
+
+                <!-- Begin :: Input group -->
+                <div class="fv-row row mb-15">
+
+                    <!--begin::Col-->
+                    <div class="col-md-3">
+                        <!--begin::Label-->
+                        <label class="form-label required fs-6 fw-bold mb-2 d-flex align-items-center">{{ __('Image 1') }}</label>
+                        <!--end::Label-->
+                        <!--begin::Image input-->
+                        <div class="image-input image-input-outline">
+                            <x-dashboard.upload-image-inp  name="image1" :image="null" :directory="null" placeholder="default.svg" type="editable" ></x-dashboard.upload-image-inp>
+                        </div>
+                        <!--end::Image input-->
+                        <!--begin::Hint-->
+                        <div class="form-text">{{ __('Allowed file types: png, jpg, jpeg.') }}</div>
+                        <!--end::Hint-->
+                        <p class="invalid-feedback" id="image1" ></p>
+                    </div>
+                    <!--end::Col-->
+                    <!--begin::Col-->
+                    <div class="col-md-3">
+                        <!--begin::Label-->
+                        <label class="form-label required fs-6 fw-bold mb-2 d-flex align-items-center">{{ __('Image 2') }}</label>
+                        <!--end::Label-->
+                        <!--begin::Image input-->
+                        <div class="image-input image-input-outline">
+                            <x-dashboard.upload-image-inp  name="image2" :image="null" :directory="null" placeholder="default.svg" type="editable" ></x-dashboard.upload-image-inp>
+                        </div>
+                        <!--end::Image input-->
+                        <!--begin::Hint-->
+                        <div class="form-text">{{ __('Allowed file types: png, jpg, jpeg.') }}</div>
+                        <!--end::Hint-->
+                        <p class="invalid-feedback" id="image2" ></p>
+                    </div>
+                    <!--end::Col-->
+                    <!--begin::Col-->
+                    <div class="col-md-3">
+                        <!--begin::Label-->
+                        <label class="form-label required fs-6 fw-bold mb-2 d-flex align-items-center">{{ __('Image 3') }}</label>
+                        <!--end::Label-->
+                        <!--begin::Image input-->
+                        <div class="image-input image-input-outline">
+                            <x-dashboard.upload-image-inp  name="image3" :image="null" :directory="null" placeholder="default.svg" type="editable" ></x-dashboard.upload-image-inp>
+                        </div>
+                        <!--end::Image input-->
+                        <!--begin::Hint-->
+                        <div class="form-text">{{ __('Allowed file types: png, jpg, jpeg.') }}</div>
+                        <!--end::Hint-->
+                        <p class="invalid-feedback" id="image3" ></p>
+                    </div>
+                    <!--end::Col-->
+                    <!--begin::Col-->
+                    <div class="col-md-3">
+                        <!--begin::Label-->
+                        <label class="form-label required fs-6 fw-bold mb-2 d-flex align-items-center">{{ __('Image 4') }}</label>
+                        <!--end::Label-->
+                        <!--begin::Image input-->
+                        <div class="image-input image-input-outline">
+                            <x-dashboard.upload-image-inp  name="image4" :image="null" :directory="null" placeholder="default.svg" type="editable" ></x-dashboard.upload-image-inp>
+                        </div>
+                        <!--end::Image input-->
+                        <!--begin::Hint-->
+                        <div class="form-text">{{ __('Allowed file types: png, jpg, jpeg.') }}</div>
+                        <!--end::Hint-->
+                        <p class="invalid-feedback" id="image4" ></p>
+                    </div>
+                    <!--end::Col-->
+
+                </div>
+                <!-- End   :: Input group -->
+
+                <!-- Begin   :: Input group -->
+                <div class="fv-row row mb-15">
+
+                    <!-- Begin :: Col -->
+                    <div class="col-md-6">
+
+                        <label class="form-label">{{ __("Title ar") }}</label>
+                        <input type="text" class="form-control" id="title_ar_inp" name="title_ar" value="{{ settings()->get('title_ar') ?? '' }}" placeholder="{{ __("Enter title in arabic") }}"/>
+                        <p class="invalid-feedback" id="title_ar" ></p>
+
+                    </div>
+                    <!-- End :: Col -->
+
+                    <!-- Begin :: Col -->
+                    <div class="col-md-6">
+
+                        <label class="form-label">{{ __("Title en") }}</label>
+                        <input type="text" class="form-control" id="title_en_inp" name="title_en" value="{{ settings()->get('title_en') ?? '' }}" placeholder="{{ __("Enter title in english") }}"/>
+                        <p class="invalid-feedback" id="title_en" ></p>
+
+                    </div>
+                    <!-- End :: Col -->
+
+                </div>
+                <!-- End   :: Input group -->
+
+                <!-- Begin   :: Input group -->
+                <div class="fv-row row mb-15">
+
+                    <!-- Begin :: Col -->
+                    <div class="col-md-6">
+
+                        <label class="form-label">{{ __("Description ar") }}</label>
+                        <textarea class="form-control form-control form-control" name="description_ar" id="description_ar_inp" data-kt-autosize="true">{{ settings()->get('description_ar') ?? '' }}</textarea>
+                        <p class="invalid-feedback" id="description_ar" ></p>
+
+                    </div>
+                    <!-- End :: Col -->
+
+                    <!-- Begin :: Col -->
+                    <div class="col-md-6">
+
+                        <label class="form-label">{{ __("Description en") }}</label>
+                        <textarea class="form-control form-control form-control" name="description_en" id="description_en_inp" data-kt-autosize="true">{{ settings()->get('description_en') ?? '' }}</textarea>
+                        <p class="invalid-feedback" id="description_en" ></p>
+
+                    </div>
+                    <!-- End :: Col -->
+
+                </div>
+                <!-- End   :: Input group -->
+
+
+
+        </div>
+        <!-- End   :: Card body -->
+
+    </div>
+    <!-- End   :: About Website Settings Card -->
+
     </form>
     <!--end::Form-->
 
@@ -666,6 +864,19 @@
 
         });
 
+    </script>
+
+    <script>
+        var image1  = `{{ $image1 }}`; console.log(image1);
+        var image2 = `{{ $image2 }}`;
+        var image3  = `{{ $image3 }}`;
+        var image4  = `{{ $image4 }}`;
+        $(document).ready(function () {
+            $('#image1_inp').css('background-image', `url('${image1}')`);
+            $('#image2_inp').css('background-image', `url('${image2}')`);
+            $('#image3_inp').css('background-image', `url('${image3}')`);
+            $('#image4_inp').css('background-image', `url('${image4}')`);
+        });
     </script>
 @endpush
 

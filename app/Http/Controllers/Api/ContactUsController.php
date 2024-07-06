@@ -6,12 +6,22 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\ValidateContactUsRequest;
 use App\Models\ContactRequest;
 
-class ContactUsInvokableController extends Controller
+class ContactUsController extends Controller
 {
+    public function page()
+    {
+        return $this->success('', [
+            'phone' => settings()->get('phone'),
+            'email' => settings()->get('email'),
+            'address' => settings()->get('address'),
+            'location' => settings()->get('location'),
+        ]);
+    }
+
     /**
      * Handle the incoming request.
      */
-    public function __invoke(ValidateContactUsRequest $request)
+    public function store(ValidateContactUsRequest $request)
     {
         ContactRequest::create([
             'full_name' => $request->validated()['full_name'],

@@ -11,7 +11,7 @@ class VideoController extends Controller
 {
     public function index()
     {
-        $videos = Video::paginate(10);
+        $videos = Video::paginate(1);
 
         return $this->successWithPagination("", VideoResource::collection($videos)->response()->getData(true));
     }

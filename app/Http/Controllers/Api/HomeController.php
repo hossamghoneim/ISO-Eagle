@@ -23,6 +23,16 @@ class HomeController extends Controller
         $categories = Category::limit(9)->get();
 
         return $this->success('', [
+            'slider' => [
+                'images' => [
+                    asset(getImagePathFromDirectory(settings()->get('image1'), 'Settings', "default.svg")),
+                    asset(getImagePathFromDirectory(settings()->get('image2'), 'Settings', "default.svg")),
+                    asset(getImagePathFromDirectory(settings()->get('image3'), 'Settings', "default.svg")),
+                    asset(getImagePathFromDirectory(settings()->get('image4'), 'Settings', "default.svg"))
+                ],
+                'title' => $lang == 'ar' ? settings()->get('title_ar') : settings()->get('title_en'),
+                'description' => $lang == 'ar' ? settings()->get('description_ar') : settings()->get('description_en'),
+            ],
             'brands' => BrandResource::collection($brands),
             'about_us' => [
                 'description' => $lang == 'ar' ? settings()->get('about_us_ar') : settings()->get('about_us_en'),
@@ -54,6 +64,10 @@ class HomeController extends Controller
             'our_sectors' => settings()->get('our_sectors'),
             'privacy_policy_text' => $lang == 'ar' ? settings()->get('privacy_policy_ar') : settings()->get('privacy_policy_en'),
             'terms_and_conditions_text' => $lang == 'ar' ? settings()->get('terms_and_conditions_ar') : settings()->get('terms_and_conditions_en'),
+            'phone' => settings()->get('phone'),
+            'email' => settings()->get('email'),
+            'address' => settings()->get('address'),
+            'location' => settings()->get('location'),
         ]);
     }
 }

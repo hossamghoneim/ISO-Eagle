@@ -32,7 +32,8 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::get('products/{product}', 'ProductController@show');
     Route::get('home', 'HomeController@index');
     Route::get('general', 'HomeController@general');
-    Route::post('contact-us', 'ContactUsInvokableController');
+    Route::get('contact-us-page', 'ContactUsController@page');
+    Route::post('contact-us', 'ContactUsController@store');
 
     Route::middleware(['auth:sanctum'])->group(function () {
         Route::apiResource('admins', 'AdminController');

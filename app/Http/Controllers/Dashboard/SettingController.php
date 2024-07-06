@@ -12,7 +12,12 @@ class SettingController extends Controller
     {
         $this->authorize('view_settings');
 
-        return view('dashboard.settings');
+        $image1 = getImagePathFromDirectory(settings()->get('image1'), 'Settings', "default.svg");
+        $image2 = getImagePathFromDirectory(settings()->get('image2'), 'Settings', "default.svg");
+        $image3 = getImagePathFromDirectory(settings()->get('image3'), 'Settings', "default.svg");
+        $image4 = getImagePathFromDirectory(settings()->get('image4'), 'Settings', "default.svg");
+
+        return view('dashboard.settings', compact('image1', 'image2', 'image3', 'image4'));
     }
 
     public function store( Request $request )
@@ -28,6 +33,8 @@ class SettingController extends Controller
             'email'                                            => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
             'phone'                                            => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
             'whatsapp'                                         => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
+            'address'                                          => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
+            'location'                                         => [ 'required_if:setting_type,general' ,'nullable' , 'string' ],
             'tax'                                              => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
             'maintenance_mode'                                 => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
             'what_we_do'                                       => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
@@ -45,12 +52,20 @@ class SettingController extends Controller
             'about_us_en'                                      => [ 'required_if:setting_type,about-website' ,'nullable' , 'string' ],
             'footer_text_ar'                                   => [ 'required_if:setting_type,about-website' ,'nullable' , 'string', 'max:255' ],
             'footer_text_en'                                   => [ 'required_if:setting_type,about-website' ,'nullable' , 'string', 'max:255' ],
+            'title_ar'                                         => [ 'required_if:setting_type,slider' ,'nullable' , 'string', 'max:255' ],
+            'title_en'                                         => [ 'required_if:setting_type,slider' ,'nullable' , 'string', 'max:255' ],
+            'description_ar'                                   => [ 'required_if:setting_type,slider' ,'nullable' , 'string', 'max:255' ],
+            'description_en'                                   => [ 'required_if:setting_type,slider' ,'nullable' , 'string', 'max:255' ],
         ]);
 
 
         $this->validateFiles('about_us_home_background','general',$request,$data);
         $this->validateFiles('about_us_page_background','general',$request,$data);
         $this->validateFiles('what_we_do_photo','general',$request,$data);
+        $this->validateFiles('image1','slider',$request,$data);
+        $this->validateFiles('image2','slider',$request,$data);
+        $this->validateFiles('image3','slider',$request,$data);
+        $this->validateFiles('image4','slider',$request,$data);
 
         foreach ( $data as $key => $value )
         {
