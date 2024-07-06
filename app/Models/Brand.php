@@ -16,7 +16,10 @@ class Brand extends Model
         'updated_at' => 'date:Y-m-d',
     ];
 
-    
+    public function getNameAttribute()
+    {
+        return $this->attributes['name_' . app()->getLocale()];
+    }
 
     public function getDescriptionAttribute()
     {
