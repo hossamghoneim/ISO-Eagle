@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\ContactUsEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\ValidateContactUsRequest;
 use App\Models\ContactRequest;
@@ -23,7 +24,7 @@ class ContactUsController extends Controller
      */
     public function store(ValidateContactUsRequest $request)
     {
-        ContactRequest::create([
+        $contactRequest = ContactRequest::create([
             'full_name' => $request->validated()['full_name'],
             'email' => $request->validated()['email'],
             'full_address' => $request->validated()['full_address'],
@@ -31,6 +32,8 @@ class ContactUsController extends Controller
             'service_type' => $request->validated()['service_type'],
             'message' => $request->validated()['message'],
         ]);
+
+        event(new ContactUsEvent($contactRequest));
 
         return $this->success("", []);
     }
