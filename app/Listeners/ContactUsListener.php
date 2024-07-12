@@ -16,9 +16,9 @@ class ContactUsListener implements ShouldQueue
      */
     public function handle(ContactUsEvent $event)
     {
-        // Logic to send the email Iso.procurement@gmail.com
+        // Logic to send the email
         $contactRequest = $event->contactRequest;
 
-        Mail::to('hossamghoneim11@gmail.com')->send(new \App\Mail\ContactUsMail($contactRequest));
+        Mail::to('Iso.procurement@gmail.com')->send(new \App\Mail\ContactUsMail($contactRequest));
     }
 }
