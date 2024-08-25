@@ -26,8 +26,8 @@ class StoreServiceRequest extends FormRequest
             'icon' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
             'name_ar' => ['required', 'min:3', 'string', "unique:services", new NotNumbersOnly()],
             'name_en' => ['required', 'min:3', 'string', "unique:services", new NotNumbersOnly()],
-            'description_ar' => ['required', 'min:3', 'string', new NotNumbersOnly()],
-            'description_en' => ['required', 'min:3', 'string', new NotNumbersOnly()],
+            'description_ar' => ['required', 'min:3', 'max:255', 'string', new NotNumbersOnly()],
+            'description_en' => ['required', 'min:3', 'max:255', 'string', new NotNumbersOnly()],
         ];
     }
 }
