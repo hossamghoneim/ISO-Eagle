@@ -21,6 +21,16 @@ class Product extends Model
         return $this->hasMany(ProductImage::class);
     }
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($product) {
+            // Delete all related product images
+            $product->productImages()->delete();
+        });
+    }
+
     public function features()
     {
         return $this->hasMany(Feature::class);
