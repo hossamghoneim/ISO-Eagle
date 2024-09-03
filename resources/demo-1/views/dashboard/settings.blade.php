@@ -271,44 +271,6 @@
                     <!-- Begin :: Col -->
                     <div class="col-md-6">
 
-                        <label class="form-label">{{ __("Tax in percentage") }}</label>
-                        <input type="number" min="0" class="form-control" name="tax" value="{{ settings()->get('tax') ?? '' }}" id="tax_inp" placeholder="{{ __("Enter the tax in percentage") }}">
-                        <p class="invalid-feedback" id="tax" ></p>
-
-                    </div>
-                    <!-- End   :: Col -->
-
-                    <!-- Begin :: Col -->
-                    <div class="col-md-6">
-
-                        <div class="d-flex justify-content-between align-items-center mt-12">
-
-                            <label class="form-label">{{ __("Maintenance mode") }}</label>
-
-                            <div class="form-check form-check-custom form-check-solid my-auto" >
-                                <input class="form-check-input" type="radio" value="1" name="maintenance_mode" id="active-radio-btn"   {{ settings()->get('maintenance_mode') == "1" ? 'checked' : '' }} />
-                                <label class="form-check-label me-10" for="active-radio-btn"> {{ __("active") }} </label>
-
-                                <input class="form-check-input" type="radio" value="0" name="maintenance_mode" id="inactive-radio-btn"  {{ settings()->get('maintenance_mode') == "0" ? 'checked' : '' }} />
-                                <label class="form-check-label" for="inactive-radio-btn"> {{ __("inactive") }} </label>
-                            </div>
-
-                        </div>
-                        <p class="invalid-feedback" id="maintenance_mode" ></p>
-
-
-                    </div>
-                    <!-- End   :: Col -->
-
-                </div>
-                <!-- End   :: Input group -->
-
-                <!-- Begin :: Input group -->
-                <div class="fv-row row mb-15">
-
-                    <!-- Begin :: Col -->
-                    <div class="col-md-6">
-
                         <label class="form-label">{{ __("Our vision text") }}</label>
                         <input type="text" class="form-control" name="our_vision" value="{{ settings()->get('our_vision') ?? '' }}" id="our_vision_inp" placeholder="{{ __("Enter our vision text") }}">
                         <p class="invalid-feedback" id="our_vision" ></p>

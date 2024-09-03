@@ -37,8 +37,6 @@ class SettingController extends Controller
             'location'                                         => [ 'required_if:setting_type,general' ,'nullable' , 'string' ],
             'opening_hours'                                    => [ 'required_if:setting_type,general' ,'nullable' , 'string' ],
             'home_footer_brief'                                => [ 'required_if:setting_type,general' ,'nullable' , 'string' ],
-            'tax'                                              => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
-            'maintenance_mode'                                 => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
             'what_we_do'                                       => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
             'our_vision'                                       => [ 'required_if:setting_type,general' ,'string' ,'nullable' , 'string' , 'max:500'  ],
             'our_sectors'                                      => [ 'required_if:setting_type,general' ,'string' ,'nullable' , 'string' , 'max:500'  ],
