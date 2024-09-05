@@ -193,6 +193,7 @@
 
                 $("#form_title").text( __('Add new product') );
                 $("[name='_method']").remove();
+                $('#images_container').fadeIn();
                 $("#crud_form").trigger('reset');
                 $(`[name='category_id']`).val('').attr('selected',true);
                 $(`[name='category_id']`).trigger('change');
